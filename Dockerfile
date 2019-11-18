@@ -1,11 +1,7 @@
 FROM nginx:1.17
 
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends vlc && \
-    rm -rf /var/lib/apt/lists/*
-
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends sudo && \
+    apt-get install -y --no-install-recommends vlc sudo && \
     useradd -ms /bin/bash -G sudo vlc && \
     echo "vlc ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers && \
     rm -rf /var/lib/apt/lists/*
