@@ -1,0 +1,4 @@
+#!/bin/bash
+set -xe
+runuser -l vlc -c 'cvlc -vvv /music/* --loop --sout "#transcode{vcodec=none,acodec=mp3,ab=128,channels=2,samplerate=44100,scodec=none}:http{mux=mp3,dst=:8080}" --sout-keep --sout-all --sout-livehttp-caching --live-caching 3000 &> /dev/null' &
+exec "$@"

@@ -1,0 +1,17 @@
+version: '2'
+
+x-logging:
+  &default-logging
+  logging:
+    driver: json-file
+    options:
+      max-size: 10m
+
+services:
+  fm:
+    image: akmuzfer/fm
+    container_name: akmuz-fm
+    volumes:
+      - ./music:/music:ro
+    <<: *default-logging
+    restart: always
